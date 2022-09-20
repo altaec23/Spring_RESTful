@@ -17,6 +17,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-hateoas', version: '2.7.3'
+
+	// https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.11'
+
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

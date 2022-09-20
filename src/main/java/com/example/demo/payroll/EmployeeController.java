@@ -1,5 +1,9 @@
 package com.example.demo.payroll;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -28,6 +32,8 @@ class EmployeeController {
 
     // Aggregate root
     // tag::get-aggregate-root[]
+
+    @Operation(summary = "Метод получения всех employees")
     @GetMapping("/employees")
     CollectionModel<EntityModel<Employee>> all() {
 
@@ -77,6 +83,15 @@ class EmployeeController {
         return ResponseEntity.noContent().build();
     }
 
+    @Operation(summary = "Метод получения employee с определенным id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Детали employee",
+                    content = {@Content(mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404",
+                    description = " Page Not Found",
+                    content = @Content)
+    })
     @GetMapping("/employees/{id}")
     EntityModel<Employee> one(@PathVariable Long id) {
 
